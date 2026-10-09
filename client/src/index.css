@@ -1,13 +1,124 @@
+/* src/index.css — 전역 토큰 · 타이포그래피 · 기본 요소 */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/galmuri@2/dist/galmuri.css");
+
+:root {
+  /* 종이 · 잉크 */
+  --paper: #f7f2e4;
+  --paper-deep: #efe7d2;
+  --paper-light: #fffcf3;
+  --ink: #221f1a;
+  --ink-soft: #5c5548;
+  --ink-faint: #8b8372;
+  --rule: #cdc2a7;
+  --rule-soft: #e2d9c2;
+
+  /* 옛 하이퍼링크 색 */
+  --link: #2337a0;
+  --link-visited: #6a2c80;
+  --accent: #b2432a;
+  --mark: #fbefb0;
+
+  /* 서체 */
+  --font-body: "IBM Plex Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Malgun Gothic", sans-serif;
+  --font-head: "Noto Serif KR", "Batang", Georgia, serif;
+  --font-pixel: "Galmuri11", "DungGeunMo", "Courier New", monospace;
+  --font-mono: "GalmuriMono11", Consolas, "Courier New", monospace;
+
+  /* 치수 · 움직임 */
+  --header-h: 56px;
+  --sidebar-w: 200px;
+  --measure: 760px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --fast: 140ms;
+  --slow: 240ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 헤더 · 본문 · 푸터를 세로로 쌓아 푸터를 바닥에 붙임 */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: background-color var(--fast) var(--ease),
+    color var(--fast) var(--ease);
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+a:hover {
+  background-color: var(--mark);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { createPost, getPosts } from "../api";
+import { formatDate } from "../utils/formatDate";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -55,7 +56,9 @@ function Posts() {
             <Link to={`/posts/${post.id}`}>
               <strong>{post.title}</strong>
             </Link>
-            <span className="meta">{post.createdAt}</span>
+            <time className="meta" dateTime={post.createdAt}>
+              {formatDate(post.createdAt)}
+            </time>
           </li>
         ))}
         {posts.length === 0 && !error && <p>아직 게시글이 없습니다.</p>}
