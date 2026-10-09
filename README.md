@@ -1,4 +1,4 @@
-# 🌌 Bit-Universe
+# 🌌 Orbit
 
 > React + Express + MySQL 기반의 커뮤니티형 게시판 웹 애플리케이션 — 게시글, 댓글, 회원 기능을 제공하는 풀스택 프로젝트
 
@@ -19,7 +19,7 @@
 
 ## 📖 프로젝트 소개
 
-**Bit-Universe**는 사용자가 게시글을 작성하고 댓글로 소통할 수 있는 커뮤니티 웹 서비스입니다.
+**Orbit**은 사용자가 게시글을 작성하고 댓글로 소통할 수 있는 커뮤니티 웹 서비스입니다.
 프론트엔드는 **React(CRA)** 로 SPA를 구성하고, 백엔드는 **Express** 서버가 REST API 제공과 React 빌드 결과물 서빙을 함께 담당합니다.
 
 - 헤더 / 사이드바 / 본문 / 푸터로 구성된 대시보드형 레이아웃
@@ -34,20 +34,56 @@
 ### Frontend
 | 구분 | 기술 |
 | --- | --- |
-| Framework | ![React](https://img.shields.io/badge/React_18-61DAFB?style=flat-square&logo=react&logoColor=black) (Create React App) |
-| Routing | ![React Router](https://img.shields.io/badge/React_Router_v6-CA4245?style=flat-square&logo=reactrouter&logoColor=white) |
-| HTTP Client | ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white) |
+| Framework | React + TypeScript |
+| Build Tool | Vite |
+| Routing | React Router |
+| HTTP Client | Axios |
 | Styling | CSS |
 | Icons | react-icons |
+| Server State | TanStack Query (React Query) |
+| Validation | Zod |
 
 ### Backend
 | 구분 | 기술 |
 | --- | --- |
-| Runtime | ![Node.js](https://img.shields.io/badge/Node.js_18+-339933?style=flat-square&logo=nodedotjs&logoColor=white) |
-| Framework | ![Express](https://img.shields.io/badge/Express_4-000000?style=flat-square&logo=express&logoColor=white) |
-| Database | ![MySQL](https://img.shields.io/badge/MySQL_8-4479A1?style=flat-square&logo=mysql&logoColor=white) (`mysql2/promise` 커넥션 풀) |
-| Security | helmet, cors, bcryptjs (비밀번호 해싱) |
-| Config | dotenv |
+| Runtime | Node.js 24 LTS |
+| Language | TypeScript |
+| Framework | Express 5 |
+| Database | MySQL 8.x |
+| DB Driver | mysql2/promise (Connection Pool) |
+| Security | Helmet, CORS, bcryptjs |
+| Authentication | JWT |
+| Validation | Zod |
+| Configuration | dotenv |
+| API Documentation | Swagger / OpenAPI |
+| Logging | Pino 또는 Winston |
+
+### Testing
+| 구분 | 기술 |
+| --- | --- |
+| Unit Test | Vitest 또는 Node.js Test Runner |
+| API Test | Supertest |
+| Integration Test | MySQL 테스트 환경 기반 통합 테스트 |
+
+### Database & Infrastructure
+| 구분 | 기술 |
+| --- | --- |
+| Database Migration | 선택한 MySQL 마이그레이션 도구 |
+| Container | Docker, Docker Compose |
+| CI/CD | GitHub Actions |
+| Deployment | AWS EC2 |
+| Database Hosting | AWS RDS for MySQL |
+| File Storage | AWS S3 (파일 업로드가 필요한 경우) |
+| Version Control | Git, GitHub |
+
+### Backend Architecture
+- **Layered Architecture:** Routes → Controllers → Services → Repositories
+- **Validation:** 요청 데이터 검증 및 공통 검증 오류 처리
+- **Error Handling:** 공통 에러 미들웨어 및 일관된 오류 응답
+- **Authentication & Authorization:** JWT 인증 및 사용자별 접근 권한 검증
+- **Database:** 커넥션 풀, 파라미터 바인딩, 트랜잭션 및 롤백
+- **Testing:** 정상 케이스, 예외 케이스, 권한 검증 및 주요 비즈니스 로직 테스트
+- **API Documentation:** Swagger / OpenAPI를 통한 API 명세 관리
 
 <br/>
 
@@ -167,13 +203,13 @@ erDiagram
 **게시글 작성** — `POST /api/posts`
 ```json
 // Request
-{ "title": "첫 번째 글", "content": "안녕하세요, Bit-Universe!" }
+{ "title": "첫 번째 글", "content": "안녕하세요, Orbit!" }
 
 // Response 201
 {
   "id": 1,
   "title": "첫 번째 글",
-  "content": "안녕하세요, Bit-Universe!",
+  "content": "안녕하세요, Orbit!",
   "createdAt": "2026-10-09 14:00:00",
   "updatedAt": "2026-10-09 14:00:00"
 }
@@ -203,7 +239,7 @@ erDiagram
 ## 📁 디렉토리 구조 (Directory Structure)
 
 ```
-Bit-Universe
+Orbit-threaded-discussion-board
 ├── client/                       # 프론트엔드 (React, CRA)
 │   ├── public/                   # index.html, favicon 등 정적 리소스
 │   ├── src/
@@ -263,8 +299,8 @@ Bit-Universe
 ### 1. 저장소 클론
 
 ```bash
-git clone https://github.com/gajigaji04/Bit-Universe.git
-cd Bit-Universe
+git clone https://github.com/gajigaji04/Orbit-threaded-discussion-board.git
+cd Orbit-threaded-discussion-board
 ```
 
 ### 2. 환경 변수 설정 (`.env`)
@@ -284,7 +320,7 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=your_password
-DB_NAME=bit_universe
+DB_NAME=orbit
 ```
 
 | 변수 | 설명 | 기본값 |
@@ -294,7 +330,7 @@ DB_NAME=bit_universe
 | `DB_PORT` | MySQL 포트 | `3306` |
 | `DB_USER` | MySQL 사용자 | `root` |
 | `DB_PASSWORD` | MySQL 비밀번호 | (빈 값) |
-| `DB_NAME` | 사용할 데이터베이스 이름 (없으면 자동 생성) | `bit_universe` |
+| `DB_NAME` | 사용할 데이터베이스 이름 (없으면 자동 생성) | `orbit` |
 
 > `.env`는 `.gitignore`에 포함되어 있어 커밋되지 않습니다.
 
@@ -326,7 +362,7 @@ npm start               # http://localhost:5000
 서버가 정상 실행되면 다음 로그가 출력됩니다. DB와 테이블은 이때 자동으로 생성됩니다.
 
 ```
-✅ MySQL 연결 성공! (database: bit_universe)
+✅ MySQL 연결 성공! (database: orbit)
 🚀 Server is running on http://localhost:5000
 ```
 

@@ -5,9 +5,9 @@ import { FaGithub } from "react-icons/fa";
 function Footer() {
   return (
     <footer className="footer">
-      <p>&copy; 2023 Bit-Universe</p>
+      <p>&copy; 2023 Orbit</p>
       <a
-        href="https://github.com/gajigaji04/Bit-Universe"
+        href="https://github.com/gajigaji04/Orbit-threaded-discussion-board"
         target="_blank"
         rel="noreferrer"
         aria-label="GitHub"

@@ -3,5 +3,5 @@ import App from "./App";
 
 test("renders header title", () => {
   render(<App />);
-  expect(screen.getByText("Bit-Universe")).toBeInTheDocument();
+  expect(screen.getByText("Orbit")).toBeInTheDocument();
 });
