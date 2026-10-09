@@ -1,6 +1,6 @@
-# 🌌 Bit-Universe
+# Orbit - Threaded Discussion Board 🚀
 
-> React + Express + MySQL 기반의 커뮤니티형 게시판 웹 애플리케이션 — 게시글, 댓글, 회원 기능을 제공하는 풀스택 프로젝트
+> React + Express + MySQL 기반의 커뮤니티형 스레드 게시판 웹 애플리케이션 — 게시글, 댓글, 회원 기능을 제공하는 풀스택 프로젝트
 
 <br/>
 
@@ -19,7 +19,7 @@
 
 ## 📖 프로젝트 소개
 
-**Bit-Universe**는 사용자가 게시글을 작성하고 댓글로 소통할 수 있는 커뮤니티 웹 서비스입니다.
+**Orbit**은 사용자가 게시글을 작성하고 댓글로 소통할 수 있는 커뮤니티 웹 서비스입니다.
 프론트엔드는 **React(CRA)** 로 SPA를 구성하고, 백엔드는 **Express** 서버가 REST API 제공과 React 빌드 결과물 서빙을 함께 담당합니다.
 
 - 헤더 / 사이드바 / 본문 / 푸터로 구성된 대시보드형 레이아웃
@@ -167,13 +167,13 @@ erDiagram
 **게시글 작성** — `POST /api/posts`
 ```json
 // Request
-{ "title": "첫 번째 글", "content": "안녕하세요, Bit-Universe!" }
+{ "title": "첫 번째 글", "content": "안녕하세요, Orbit!" }
 
 // Response 201
 {
   "id": 1,
   "title": "첫 번째 글",
-  "content": "안녕하세요, Bit-Universe!",
+  "content": "안녕하세요, Orbit!",
   "createdAt": "2026-10-09 14:00:00",
   "updatedAt": "2026-10-09 14:00:00"
 }
