@@ -1,48 +1,43 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "../styles/Sidebar.css";
 
 import { FaHouse } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { IoChatboxEllipses } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
 
-export default function Sidebar() {
+const menuItems = [
+  { to: "/", label: "Home", icon: FaHouse },
+  { to: "/posts", label: "Posts", icon: IoChatboxEllipses },
+  { to: "/about", label: "About", icon: FaUser },
+  { to: "/contact", label: "Contact", icon: MdEmail },
+];
+
+export default function Sidebar({ isOpen }) {
   return (
-    <div className="sidebar">
+    <aside className={`sidebar ${isOpen ? "" : "closed"}`}>
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <FaHouse className="sidebarIcon" />
-              Home
-            </li>
-            <li className="sidebarListItem">
-              <FaUser className="sidebarIcon" />
-              About
-            </li>
-            <li className="sidebarListItem">
-              <IoChatboxEllipses className="sidebarIcon" />
-              Content
-            </li>
-          </ul>
-          {/* 2 */}
-          <h3 className="sidebarTitle">Dashboard</h3>
-          <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <FaHouse className="sidebarIcon" />
-              Home
-            </li>
-            <li className="sidebarListItem">
-              <FaUser className="sidebarIcon" />
-              About
-            </li>
-            <li className="sidebarListItem">
-              <IoChatboxEllipses className="sidebarIcon" />
-              Content
-            </li>
+            {menuItems.map(({ to, label, icon: Icon }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  end={to === "/"}
+                  className={({ isActive }) =>
+                    `sidebarListItem ${isActive ? "active" : ""}`
+                  }
+                >
+                  <Icon className="sidebarIcon" />
+                  {label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-    </div>
+    </aside>
   );
 }

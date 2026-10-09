@@ -1,41 +1,82 @@
 /* src/App.css */
-.container {
-  display: flex;
-}
-
-header,
-aside,
-main,
-footer {
-  padding: 20px;
-}
-
-header,
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-}
-
 .routerPages {
   flex: 4;
-  background-color: gray;
+  padding: 20px 32px 80px; /* 하단 고정 푸터 높이만큼 여백 */
+  min-width: 0;
 }
 
-nav ul {
+.card {
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form.inline {
+  flex-direction: row;
+}
+
+.form input,
+.form textarea {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font: inherit;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: rgb(98, 87, 196);
+  color: #fff;
+  cursor: pointer;
+}
+
+button.danger {
+  background: #d9534f;
+}
+
+button.small {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+}
+
+.postList,
+.commentList {
   list-style: none;
   padding: 0;
 }
 
-nav ul li {
-  margin-bottom: 10px;
+.postList li,
+.commentList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-nav a {
+.postList a {
   color: #333;
   text-decoration: none;
 }
 
-nav a:hover {
-  color: #007bff;
+.meta {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.postContent {
+  white-space: pre-wrap;
+}
+
+.error {
+  color: #d9534f;
 }

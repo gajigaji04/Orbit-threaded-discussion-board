@@ -1,66 +1,40 @@
-const Post = require("./server/models/Post");
+const Post = require("../models/Post");
 
 exports.createPost = async (req, res) => {
-  try {
-    const { title, content } = req.body;
-    const newPost = await Post.create({ title, content });
-    res.json(newPost);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+  const { title, content } = req.body;
+  if (!title || !content) {
+    return res.status(400).json({ error: "title and content are required" });
   }
+  const newPost = await Post.create({ title, content });
+  res.status(201).json(newPost);
 };
 
 exports.getPosts = async (req, res) => {
-  try {
-    const posts = await Post.find();
-    res.json(posts);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
+  const posts = await Post.findAll();
+  res.json(posts);
 };
 
 exports.getPostById = async (req, res) => {
-  const postId = req.params.postId;
-  try {
-    const post = await Post.findById(postId);
-    if (!post) {
-      return res.status(404).json({ error: "Post not found" });
-    }
-    res.json(post);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+  const post = await Post.findById(req.params.postId);
+  if (!post) {
+    return res.status(404).json({ error: "Post not found" });
   }
+  res.json(post);
 };
 
 exports.updatePost = async (req, res) => {
-  const postId = req.params.postId;
-  try {
-    const updatedPost = await Post.findByIdAndUpdate(postId, req.body, {
-      new: true,
-    });
-    if (!updatedPost) {
-      return res.status(404).json({ error: "Post not found" });
-    }
-    res.json(updatedPost);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+  const { title, content } = req.body;
+  const updatedPost = await Post.update(req.params.postId, { title, content });
+  if (!updatedPost) {
+    return res.status(404).json({ error: "Post not found" });
   }
+  res.json(updatedPost);
 };
 
 exports.deletePost = async (req, res) => {
-  const postId = req.params.postId;
-  try {
-    const deletedPost = await Post.findByIdAndDelete(postId);
-    if (!deletedPost) {
-      return res.status(404).json({ error: "Post not found" });
-    }
-    res.json({ message: "Post deleted successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+  const deleted = await Post.remove(req.params.postId);
+  if (!deleted) {
+    return res.status(404).json({ error: "Post not found" });
   }
+  res.json({ message: "Post deleted successfully" });
 };

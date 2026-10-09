@@ -6,12 +6,14 @@ function Footer() {
   return (
     <footer className="footer">
       <p>&copy; 2023 Bit-Universe</p>
-      <p>
-        <h2>Connect</h2>
-      </p>
-      <p>
+      <a
+        href="https://github.com/gajigaji04/Bit-Universe"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="GitHub"
+      >
         <FaGithub />
-      </p>
+      </a>
     </footer>
   );
 }
