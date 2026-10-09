@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 # 🌌 Orbit
-=======
+
 # Orbit - Threaded Discussion Board 🚀
->>>>>>> ef3cc9c1e83c9316a7250706fbf1c20424481d2c
 
 > React + Express + MySQL 기반의 커뮤니티형 스레드 게시판 웹 애플리케이션 — 게시글, 댓글, 회원 기능을 제공하는 풀스택 프로젝트
 
@@ -35,7 +33,6 @@
 
 ## 🛠기술 스택 (Tech Stack)
 
-<<<<<<< HEAD
 ### Frontend
 | 구분 | 기술 |
 | --- | --- |
@@ -89,7 +86,7 @@
 - **Database:** 커넥션 풀, 파라미터 바인딩, 트랜잭션 및 롤백
 - **Testing:** 정상 케이스, 예외 케이스, 권한 검증 및 주요 비즈니스 로직 테스트
 - **API Documentation:** Swagger / OpenAPI를 통한 API 명세 관리
-=======
+
 ## Frontend
 
 | 구분           | 기술                           |
