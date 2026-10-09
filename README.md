@@ -29,25 +29,67 @@
 
 <br/>
 
-## 🛠 기술 스택
+## 🛠기술 스택 (Tech Stack)
 
-### Frontend
-| 구분 | 기술 |
-| --- | --- |
-| Framework | ![React](https://img.shields.io/badge/React_18-61DAFB?style=flat-square&logo=react&logoColor=black) (Create React App) |
-| Routing | ![React Router](https://img.shields.io/badge/React_Router_v6-CA4245?style=flat-square&logo=reactrouter&logoColor=white) |
-| HTTP Client | ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white) |
-| Styling | CSS |
-| Icons | react-icons |
+## Frontend
 
-### Backend
-| 구분 | 기술 |
-| --- | --- |
-| Runtime | ![Node.js](https://img.shields.io/badge/Node.js_18+-339933?style=flat-square&logo=nodedotjs&logoColor=white) |
-| Framework | ![Express](https://img.shields.io/badge/Express_4-000000?style=flat-square&logo=express&logoColor=white) |
-| Database | ![MySQL](https://img.shields.io/badge/MySQL_8-4479A1?style=flat-square&logo=mysql&logoColor=white) (`mysql2/promise` 커넥션 풀) |
-| Security | helmet, cors, bcryptjs (비밀번호 해싱) |
-| Config | dotenv |
+| 구분           | 기술                           |
+| ------------ | ---------------------------- |
+| Framework    | React + TypeScript           |
+| Build Tool   | Vite                         |
+| Routing      | React Router                 |
+| HTTP Client  | Axios                        |
+| Styling      | CSS                          |
+| Icons        | react-icons                  |
+| Server State | TanStack Query (React Query) |
+| Validation   | Zod                          |
+
+## Backend
+
+| 구분                | 기술                               |
+| ----------------- | -------------------------------- |
+| Runtime           | Node.js 24 LTS                   |
+| Language          | TypeScript                       |
+| Framework         | Express 5                        |
+| Database          | MySQL 8.x                        |
+| DB Driver         | mysql2/promise (Connection Pool) |
+| Security          | Helmet, CORS, bcryptjs           |
+| Authentication    | JWT                              |
+| Validation        | Zod                              |
+| Configuration     | dotenv                           |
+| API Documentation | Swagger / OpenAPI                |
+| Logging           | Pino 또는 Winston                  |
+
+## Testing
+
+| 구분               | 기술                            |
+| ---------------- | ----------------------------- |
+| Unit Test        | Vitest 또는 Node.js Test Runner |
+| API Test         | Supertest                     |
+| Integration Test | MySQL 테스트 환경 기반 통합 테스트        |
+
+## Database & Infrastructure
+
+| 구분                 | 기술                      |
+| ------------------ | ----------------------- |
+| Database Migration | 선택한 MySQL 마이그레이션 도구     |
+| Container          | Docker, Docker Compose  |
+| CI/CD              | GitHub Actions          |
+| Deployment         | AWS EC2                 |
+| Database Hosting   | AWS RDS for MySQL       |
+| File Storage       | AWS S3 (파일 업로드가 필요한 경우) |
+| Version Control    | Git, GitHub             |
+
+## Backend Architecture
+
+* **Layered Architecture:** Routes → Controllers → Services → Repositories
+* **Validation:** 요청 데이터 검증 및 공통 검증 오류 처리
+* **Error Handling:** 공통 에러 미들웨어 및 일관된 오류 응답
+* **Authentication & Authorization:** JWT 인증 및 사용자별 접근 권한 검증
+* **Database:** 커넥션 풀, 파라미터 바인딩, 트랜잭션 및 롤백
+* **Testing:** 정상 케이스, 예외 케이스, 권한 검증 및 주요 비즈니스 로직 테스트
+* **API Documentation:** Swagger / OpenAPI를 통한 API 명세 관리
+
 
 <br/>
 
