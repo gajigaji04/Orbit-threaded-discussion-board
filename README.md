@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 # 🌌 Orbit
+=======
+# Orbit - Threaded Discussion Board 🚀
+>>>>>>> ef3cc9c1e83c9316a7250706fbf1c20424481d2c
 
-> React + Express + MySQL 기반의 커뮤니티형 게시판 웹 애플리케이션 — 게시글, 댓글, 회원 기능을 제공하는 풀스택 프로젝트
+> React + Express + MySQL 기반의 커뮤니티형 스레드 게시판 웹 애플리케이션 — 게시글, 댓글, 회원 기능을 제공하는 풀스택 프로젝트
 
 <br/>
 
@@ -29,8 +33,9 @@
 
 <br/>
 
-## 🛠 기술 스택
+## 🛠기술 스택 (Tech Stack)
 
+<<<<<<< HEAD
 ### Frontend
 | 구분 | 기술 |
 | --- | --- |
@@ -84,6 +89,67 @@
 - **Database:** 커넥션 풀, 파라미터 바인딩, 트랜잭션 및 롤백
 - **Testing:** 정상 케이스, 예외 케이스, 권한 검증 및 주요 비즈니스 로직 테스트
 - **API Documentation:** Swagger / OpenAPI를 통한 API 명세 관리
+=======
+## Frontend
+
+| 구분           | 기술                           |
+| ------------ | ---------------------------- |
+| Framework    | React + TypeScript           |
+| Build Tool   | Vite                         |
+| Routing      | React Router                 |
+| HTTP Client  | Axios                        |
+| Styling      | CSS                          |
+| Icons        | react-icons                  |
+| Server State | TanStack Query (React Query) |
+| Validation   | Zod                          |
+
+## Backend
+
+| 구분                | 기술                               |
+| ----------------- | -------------------------------- |
+| Runtime           | Node.js 24 LTS                   |
+| Language          | TypeScript                       |
+| Framework         | Express 5                        |
+| Database          | MySQL 8.x                        |
+| DB Driver         | mysql2/promise (Connection Pool) |
+| Security          | Helmet, CORS, bcryptjs           |
+| Authentication    | JWT                              |
+| Validation        | Zod                              |
+| Configuration     | dotenv                           |
+| API Documentation | Swagger / OpenAPI                |
+| Logging           | Pino 또는 Winston                  |
+
+## Testing
+
+| 구분               | 기술                            |
+| ---------------- | ----------------------------- |
+| Unit Test        | Vitest 또는 Node.js Test Runner |
+| API Test         | Supertest                     |
+| Integration Test | MySQL 테스트 환경 기반 통합 테스트        |
+
+## Database & Infrastructure
+
+| 구분                 | 기술                      |
+| ------------------ | ----------------------- |
+| Database Migration | 선택한 MySQL 마이그레이션 도구     |
+| Container          | Docker, Docker Compose  |
+| CI/CD              | GitHub Actions          |
+| Deployment         | AWS EC2                 |
+| Database Hosting   | AWS RDS for MySQL       |
+| File Storage       | AWS S3 (파일 업로드가 필요한 경우) |
+| Version Control    | Git, GitHub             |
+
+## Backend Architecture
+
+* **Layered Architecture:** Routes → Controllers → Services → Repositories
+* **Validation:** 요청 데이터 검증 및 공통 검증 오류 처리
+* **Error Handling:** 공통 에러 미들웨어 및 일관된 오류 응답
+* **Authentication & Authorization:** JWT 인증 및 사용자별 접근 권한 검증
+* **Database:** 커넥션 풀, 파라미터 바인딩, 트랜잭션 및 롤백
+* **Testing:** 정상 케이스, 예외 케이스, 권한 검증 및 주요 비즈니스 로직 테스트
+* **API Documentation:** Swagger / OpenAPI를 통한 API 명세 관리
+
+>>>>>>> ef3cc9c1e83c9316a7250706fbf1c20424481d2c
 
 <br/>
 
