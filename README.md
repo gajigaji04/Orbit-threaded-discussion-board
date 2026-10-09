@@ -1,6 +1,6 @@
-# 🌌 Bit-Universe
+# Orbit - Threaded Discussion Board 🚀
 
-> React + Express + MySQL 기반의 커뮤니티형 게시판 웹 애플리케이션 — 게시글, 댓글, 회원 기능을 제공하는 풀스택 프로젝트
+> React + Express + MySQL 기반의 커뮤니티형 스레드 게시판 웹 애플리케이션 — 게시글, 댓글, 회원 기능을 제공하는 풀스택 프로젝트
 
 <br/>
 
