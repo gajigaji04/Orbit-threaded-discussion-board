@@ -3,6 +3,7 @@ const User = require("../models/User");
 
 const SALT_ROUNDS = 10;
 
+// 회원 가입 기능
 exports.createUser = async (req, res) => {
   const { username, email, password } = req.body;
   if (!username || !email || !password) {
@@ -15,11 +16,13 @@ exports.createUser = async (req, res) => {
   res.status(201).json(newUser);
 };
 
+//  회원 목록 조회 기능
 exports.getUsers = async (req, res) => {
   const users = await User.findAll();
   res.json(users);
 };
 
+// 특정 회원 정보 조회 기능
 exports.getUserById = async (req, res) => {
   const user = await User.findById(req.params.userId);
   if (!user) {
@@ -28,6 +31,7 @@ exports.getUserById = async (req, res) => {
   res.json(user);
 };
 
+// 회원 정보 수정 기능
 exports.updateUser = async (req, res) => {
   const { username, email, password } = req.body;
   const passwordHash = password
@@ -44,6 +48,7 @@ exports.updateUser = async (req, res) => {
   res.json(updatedUser);
 };
 
+// 회원 탈퇴 기능
 exports.deleteUser = async (req, res) => {
   const deleted = await User.remove(req.params.userId);
   if (!deleted) {
