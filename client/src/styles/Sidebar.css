@@ -1,19 +1,40 @@
+/* 본문 + 사이드바 컨테이너 */
 .container {
-  display: flex;
-}
-
-.sidebar {
   flex: 1;
-  height: calc(100vh - 50px);
-  background-color: #eeeeee;
-
-  position: sticky;
-  top: 50px;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
 }
 
+/* 옛 프레임 메뉴처럼 좁고 고정된 사이드바 */
+.sidebar {
+  flex: 0 0 var(--sidebar-w);
+  width: var(--sidebar-w);
+  overflow: hidden;
+  overflow: clip; /* hidden과 달리 내부 sticky 메뉴를 막지 않음 */
+  background-color: var(--paper-deep);
+  border-right: 1px solid var(--rule);
+  visibility: visible;
+  transition: flex-basis var(--slow) var(--ease), width var(--slow) var(--ease),
+    visibility 0s linear 0s;
+}
+
+.sidebar.closed {
+  flex-basis: 0;
+  width: 0;
+  border-right-width: 0;
+  visibility: hidden; /* 닫힌 메뉴는 탭 순서에서도 빠짐 */
+  transition: flex-basis var(--slow) var(--ease), width var(--slow) var(--ease),
+    visibility 0s linear var(--slow);
+}
+
+/* 배경은 본문 높이만큼 늘어나고, 메뉴만 스크롤을 따라옴 */
 .sidebarWrapper {
-  padding: 20px;
-  color: #555;
+  position: sticky;
+  top: var(--header-h);
+  width: var(--sidebar-w);
+  padding: 24px 16px;
+  color: var(--ink-soft);
 }
 
 .sidebarMenu {
@@ -21,38 +42,110 @@
 }
 
 .sidebarTitle {
-  font-size: 0.9rem;
-  color: rgb(197, 197, 197);
+  margin: 0 0 10px;
+  padding: 0 8px 6px;
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-bottom: 1px dotted var(--ink-faint);
 }
 
 .sidebarList {
   list-style: none;
-  padding: 0.5rem;
+  margin: 0;
+  padding: 0;
 }
 
-.sidebarListItem {
-  padding: 5px;
-  cursor: pointer;
+.sidebarList li + li {
+  margin-top: 2px;
+}
+
+.sidebarListItem,
+.sidebarListItem:visited {
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  gap: 10px;
+  padding: 6px 8px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background-color var(--fast) var(--ease),
+    color var(--fast) var(--ease), padding-left var(--fast) var(--ease);
+}
+
+.sidebarListItem:hover {
+  background-color: var(--mark);
+  color: var(--ink);
+  padding-left: 12px;
+}
+
+/* 현재 페이지: 반전된 선택 막대 */
+.sidebarListItem.active,
+.sidebarListItem.active:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+  padding-left: 12px;
 }
 
 .sidebarIcon {
-  margin-right: 10px;
-  font-size: 20px !important;
+  flex: none;
+  font-size: 14px !important;
+  opacity: 0.8;
 }
 
-.sidebarListItem.active,
-.sidebarListItem:hover {
-  background-color: rgb(212, 209, 235);
-}
+/* ── 모바일: 사이드바를 상단 가로 메뉴로 ── */
+@media (max-width: 720px) {
+  .container {
+    flex-direction: column;
+  }
 
-.sidebar.closed {
-  display: none;
-}
+  .sidebar {
+    position: static;
+    flex: none;
+    width: 100%;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+    transition: none;
+  }
 
-.sidebarListItem {
-  color: inherit;
-  text-decoration: none;
+  .sidebar.closed {
+    display: none;
+  }
+
+  .sidebarWrapper {
+    position: static;
+    width: 100%;
+    padding: 8px 16px;
+  }
+
+  .sidebarMenu {
+    margin: 0;
+  }
+
+  .sidebarTitle {
+    display: none;
+  }
+
+  .sidebarList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .sidebarList li + li {
+    margin-top: 0;
+  }
+
+  .sidebarListItem,
+  .sidebarListItem:visited,
+  .sidebarListItem:hover,
+  .sidebarListItem.active {
+    padding: 4px 10px;
+    font-size: 0.9rem;
+  }
 }

@@ -7,6 +7,7 @@ import {
   getComments,
   getPost,
 } from "../api";
+import { formatDate } from "../utils/formatDate";
 
 function PostDetail() {
   const { postId } = useParams();
@@ -45,15 +46,19 @@ function PostDetail() {
   };
 
   if (error) return <p className="error">{error}</p>;
-  if (!post) return <p>불러오는 중...</p>;
+  if (!post) return <p className="loading">불러오는 중...</p>;
 
   return (
     <div>
-      <Link to="/posts">← 목록으로</Link>
+      <Link to="/posts" className="backLink">
+        ← 목록으로
+      </Link>
 
       <article className="card">
         <h2>{post.title}</h2>
-        <p className="meta">{post.createdAt}</p>
+        <p className="meta">
+          <time dateTime={post.createdAt}>{formatDate(post.createdAt)}</time>
+        </p>
         <p className="postContent">{post.content}</p>
         <button className="danger" onClick={handleDeletePost}>
           삭제

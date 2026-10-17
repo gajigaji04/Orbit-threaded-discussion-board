@@ -1,22 +1,37 @@
+/* 문서 바닥에 붙는 간결한 콜로폰 */
 .footer {
-  background-color: #333;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  padding: 14px 16px;
+  background-color: var(--paper);
+  color: var(--ink-soft);
+  border-top: 1px solid var(--ink);
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
 }
 
 .footer p {
   margin: 0;
 }
 
-.footer a {
-  color: white;
-  font-size: 1.4rem;
-  display: flex;
+.footer a,
+.footer a:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--ink);
+  font-size: 1rem;
+  border: 1px solid transparent;
+  transition: background-color var(--fast) var(--ease),
+    border-color var(--fast) var(--ease);
+}
+
+.footer a:hover {
+  background: var(--mark);
+  border-color: var(--ink);
 }

@@ -20,7 +20,7 @@ function Header({ toggleSidebar }) {
         {/* 헤더 타이틀 */}
         <Link to="/" className="headerTitle">
           <SiStardock className="headerLogoIcon" />
-          Bit-Universe
+          Orbit
         </Link>
       </div>
     </header>
