@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const mysql = require("mysql2/promise");
 
-const DB_NAME = process.env.DB_NAME || "bit_universe";
+const DB_NAME = process.env.DB_NAME || "orbit";
 
 const connectionOptions = {
   host: process.env.DB_HOST || "localhost",
@@ -28,12 +28,12 @@ async function initDatabase() {
   });
   try {
     await conn.query(
-      `CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` DEFAULT CHARACTER SET utf8mb4`
+      `CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` DEFAULT CHARACTER SET utf8mb4`,
     );
     await conn.query(`USE \`${DB_NAME}\``);
     const schema = fs.readFileSync(
       path.join(__dirname, "../db/schema.sql"),
-      "utf8"
+      "utf8",
     );
     await conn.query(schema);
   } finally {
